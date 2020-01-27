@@ -1,0 +1,131 @@
+html {
+    max-width: 1920px;
+}
+
+
+body {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    font-family: 'Lato',Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    color: white;
+    text-transform: uppercase;
+    font-size: 30px;
+    margin: 2rem 0 0 0;
+    padding: 0;
+}
+
+h2{
+    color: white;
+    margin: 1rem 0 2rem 0;
+}
+
+p {
+    color: black;
+    margin: 1rem 0;
+}
+
+
+button {
+    display: inline-block;
+    border: none;
+    outline: none;
+    vertical-align: middle;
+    margin: 0 .5rem;
+    width: 10rem;
+    height: 2.5rem;
+    font-size: 1rem;
+    font-family: inherit;
+    text-transform: capitalize;
+    font-weight: 700;
+    color: #F8F5F9;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: #1F115A;
+}
+
+.container {
+    padding: 0 1%;
+}
+
+.search__field {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: url(image/globe-2.jpg);
+    padding: 2rem 0;
+    height: 290px;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    
+}
+
+.search-type {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sort-button {
+    border: 2px solid white;
+    border-radius: 3px;
+    margin: 0 0.5rem;
+}
+
+.input__field {
+    width: 40%;
+}
+
+.input-keyword {
+    width: 100%;
+    margin-top: 1rem;
+    background-color: white;
+    border: 2px solid #59116F;
+    border-radius: 5px;
+}
+
+.input-keyword > input {
+    width: 88%;
+    height: 2rem;
+    text-align: center;
+    font-family: inherit;
+    font-size: 1.2rem;
+    border: none;
+}
+
+.input-keyword > svg {
+    vertical-align: bottom;
+}
+
+.input-keyword > button {
+    width: 8%;
+    margin: 0;
+}
+
+.subtitle > p {
+    color: white;
+}
+
+.country__display {
+    width: 100%;
+    padding: 0 10%;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.country__display-child {
+    margin: .5rem;
+    width: 23%;
+    text-align: center;
+    background-color: #F7F2F9 ;
+    padding: 1rem;
+    border-radius: 5px;
+}
+

@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang=“en”>
+<head>
+    <title>DOM</title>
+    <link href=“https://fonts.googleapis.com/css?family=Arvo:400,400i,700,700i&display=swap” rel=“stylesheet”>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: ‘Arvo’, serif;
+            font-weight: bolder;
+            color: #333;
+        }
+        .flex-container {
+            border: 2px solid orange;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .flex-container>div {
+            width: 200px;
+            margin: 5px;
+            text-align: center;
+            border: 1px solid #999;
+        }
+        img {
+            width: 45%;
+        }
+    </style>
+</head>
+<body>
+    <button>Generate</button>
+    <div class=“flex-container”></div>
+    <script src=“./countries.js”></script>
+    <script>
+        console.log(countries)
+        const flexContainer = document.querySelector(‘.flex-container’)
+        const url = ‘https://restcountries.eu/rest/v2/all’
+        fetch(url)
+            .then(response => response.json())
+            .then(countries => {
+                for (const country of countries) {
+                    console.log(country)
+                    let {
+                        name,
+                        capital,
+                        population,
+                        region,
+                        languages,
+                        flag,
+                        topLevelDomain: domain
+                    } = country
+                    let div = document.createElement(‘div’)
+                    let countryName = document.createElement(‘h2’)
+                    let countryCapital = document.createElement(‘p’)
+                    let countryPopulation = document.createElement(‘p’)
+                    let countryflag = document.createElement(‘img’)
+                    countryName.textContent = name
+                    countryCapital.textContent = capital
+                    countryPopulation.textContent = population
+                    countryflag.src = flag
+                    div.appendChild(countryName)
+                    div.appendChild(countryCapital)
+                    div.appendChild(countryPopulation)
+                    div.appendChild(countryflag)
+                    flexContainer.appendChild(div)
+                    console.log(name, capital, population, region, languages, domain[0])
+                }
+            })
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang=“en”>
+<head>
+    <title>DOM</title>
+    <link href=“https://fonts.googleapis.com/css?family=Arvo:400,400i,700,700i&display=swap” rel=“stylesheet”>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: ‘Arvo’, serif;
+            font-weight: bolder;
+            color: #333;
+        }
+        .flex-container {
+            border: 2px solid orange;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .flex-container>div {
+            width: 200px;
+            margin: 5px;
+            text-align: center;
+            border: 1px solid #999;
+        }
+        img {
+            width: 45%;
+        }
+    </style>
+</head>
+<body>
+    <button>Generate</button>
+    <div class=“flex-container”>
+    </div>
+    <script src=“./countries.js”></script>
+    <script src=“./countries_obj.js”></script>
+    <script>
+        console.log(countries)
+        const flexContainer = document.querySelector(‘.flex-container’)
+        const url = ‘https://restcountries.eu/rest/v2/all’
+        fetch(url)
+            .then(response => response.json())
+            .then(countries => {
+                for (const country of countries) {
+                    let {
+                        name,
+                        capital,
+                        population,
+                        region,
+                        languages,
+                        flag,
+                        topLevelDomain: domain
+                    } = country
+                    flexContainer.innerHTML += `<div>
+                        <h2>${name}</h2>
+                        <p>${capital}</p>
+                        <p>${population}</p>
+                        <img src=${flag}>
+                         </div>`
+                }
+            })
+    </script>
+</body>
+</html>
