@@ -6,6 +6,9 @@ function countryFinder() {
     fetch(countryList)
         .then(response => response.json())
         .then(countries => {
+
+            console.log(countries.length);
+
             for (const country of countries) {
 
                 console.log(country)
@@ -17,7 +20,6 @@ function countryFinder() {
                     region,
                     languages,
                     flag,
-                    topLevelDomain: domain
                 } = country;
 
                 let div = document.createElement('div');
@@ -28,15 +30,16 @@ function countryFinder() {
                 let countryRegion = document.createElement('p');
                 let countryLanguage = document.createElement('p');
                 
-                countryName.textContent = name;
-                countryCapital.textContent = 'Capital: ' + capital;
-                countryPopulation.textContent = 'Population: ' + population;
-                countryRegion.textContent = 'Region: ' + region;
-                countryLanguage.textContent = 'Language: ' + languages[0]['name'];
+                countryName.innerHTML = name;
+                countryCapital.innerHTML = '<b>Capital:</b> ' + capital;
+                countryPopulation.innerHTML = '<b>Population:</b> ' + population;
+                countryRegion.innerHTML = '<b>Region:</b> ' + region;
+                countryLanguage.innerHTML = '<b>Language:</b> ' + languages[0]['name'];
 
                 countryflag.src = flag;
 
                 div.classList.add('country__display-child');
+                countryflag.classList.add('country__display-img')
                 
                 countryDisplay.append(div);
 
@@ -47,8 +50,8 @@ function countryFinder() {
                 div.appendChild(countryRegion);
                 div.appendChild(countryLanguage);
 
-                countryflag.style.width = '14rem';
-                countryflag.style.height = '10rem';
+                // countryflag.style.width = '14rem';
+                // countryflag.style.height = '10rem';
                 
             }
         })
