@@ -95,7 +95,7 @@ button {
 
 .input-keyword > input {
     width: 100%;
-    height: 2rem;
+    height: 2.5rem;
     text-align: center;
     font-family: inherit;
     font-size: 1.2rem;
@@ -112,6 +112,7 @@ button {
 .input-keyword > button {
     width: 8%;
     margin: 0;
+    height: auto;
 }
 
 .subtitle > p {
