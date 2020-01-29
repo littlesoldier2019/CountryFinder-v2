@@ -13,7 +13,7 @@ function countryFinder() {
     let countryPopulation;
     let countryRegion;
     let countryLanguage;
-    
+    let divArray = [];
             
 
     fetch(countryList)
@@ -22,20 +22,17 @@ function countryFinder() {
 
         console.log(countries.length);
         document.getElementById('totalCountry').innerHTML = countries.length;
-                
 
-        function createDiv() {
+        for (const country of countries) {
 
-            for (const country of countries) {
-
-                let {
-                    name,
-                    capital,
-                    population,
-                    region,
-                    languages,
-                    flag,
-                } = country;
+            let {
+                name,
+                capital,
+                population,
+                region,
+                languages,
+                flag,
+            } = country;
 
             div = document.createElement('div');
             flagDiv = document.createElement('div');
@@ -52,7 +49,7 @@ function countryFinder() {
             countryRegion.innerHTML = '<b>Region:</b> ' + region;
             countryLanguage.innerHTML = '<b>Language:</b> ' + languages[0]['name'];   
             countryflag.src = flag;
-    
+
             div.classList.add('country__display-child');
             flagDiv.classList.add('country__display-imgDiv');
             countryName.classList.add('country__display-name');
@@ -68,19 +65,27 @@ function countryFinder() {
             div.appendChild(countryRegion);
             div.appendChild(countryLanguage);
 
-            }   
+            divArray.push(div);
+
             
         }
 
-        createDiv(countries); 
-        
+
+    })
+    
         let sortButton = document.getElementById('sort');
             sortButton.addEventListener('click', function() {
             countryDisplay.innerHTML = "";
-            createDiv(countries.reverse());
-            });
-        })
             
+            divArray.reverse();
+
+            for (let i = 0; i < divArray.length; i++) {
+                countryDisplay.appendChild(divArray[i]);
+                console.log(divArray[i]);
+            }
+        
+            
+        });
 
     let startSearch = document.querySelector('#start-word');
     let containSearch = document.querySelector('#contain-word');
@@ -101,7 +106,7 @@ function countryFinder() {
     
 
     search.addEventListener('click', findCountry);
-    searchInput.addEventListener('keydown', findCountry);
+    searchInput.addEventListener('keyup', findCountry);
 
     function findCountry() {
         clearForm();
