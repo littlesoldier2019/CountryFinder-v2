@@ -6,6 +6,7 @@ function countryFinder() {
     const countryList = 'https://restcountries.eu/rest/v2/all';
 
     let div;
+    let flagDiv;
     let countryflag;
     let countryName;
     let countryCapital;
@@ -37,6 +38,7 @@ function countryFinder() {
                 } = country;
 
             div = document.createElement('div');
+            flagDiv = document.createElement('div');
             countryflag = document.createElement('img');
             countryName = document.createElement('h3');
             countryCapital = document.createElement('p');
@@ -48,22 +50,24 @@ function countryFinder() {
             countryCapital.innerHTML = '<b>Capital:</b> ' + capital;
             countryPopulation.innerHTML = '<b>Population:</b> ' + population;
             countryRegion.innerHTML = '<b>Region:</b> ' + region;
-            countryLanguage.innerHTML = '<b>Language:</b> ' + languages[0]['name'];
-    
+            countryLanguage.innerHTML = '<b>Language:</b> ' + languages[0]['name'];   
             countryflag.src = flag;
     
             div.classList.add('country__display-child');
+            flagDiv.classList.add('country__display-imgDiv');
             countryName.classList.add('country__display-name');
             countryflag.classList.add('country__display-img');
             
             countryDisplay.append(div);
-    
-            div.appendChild(countryflag);
+            div.appendChild(flagDiv);
+            flagDiv.append(countryflag);
+
             div.appendChild(countryName);
             div.appendChild(countryCapital);
             div.appendChild(countryPopulation);
             div.appendChild(countryRegion);
             div.appendChild(countryLanguage);
+
             }   
             
         }
@@ -127,8 +131,9 @@ function countryFinder() {
                 countryDiv[i].style.display = 'none';
             }
 
-            console.log(countryH3[i].innerHTML.startsWith(searchInput.value));
         }
+        
+        console.log(searchInput.value);
     
     }
 
@@ -153,7 +158,7 @@ function countryFinder() {
 
     function clearForm() {
         if (countryDiv.innerHTML !== "" || resultNum.length !== 0) {
-            countryDiv.innerHTML = "";
+            countryDiv.innerHTML === "";
             resultNum = [];
         }
     }
@@ -162,4 +167,4 @@ function countryFinder() {
 }
 
 // time slap input keyword
-// reverse the whole contry
+// reverse the whole country
