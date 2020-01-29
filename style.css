@@ -1,5 +1,6 @@
 html {
-    max-width: 1920px;
+    height: 100%;
+    width: 100%;
 }
 
 
@@ -75,9 +76,15 @@ button {
 }
 
 .sort-button {
-    border: 2px solid white;
     border-radius: 3px;
     margin: 0 0.5rem;
+    width: 3rem;
+}
+
+.sort-button > button {
+    width: 3rem;
+    margin: 0;
+    border: 2px solid white;
 }
 
 .input__field {
@@ -99,8 +106,9 @@ button {
     text-align: center;
     font-family: inherit;
     font-size: 1.2rem;
-    border: none;
+    border-radius: 3px;
     display: flex;
+    border: none;
 }
 
 .input-keyword > svg {
@@ -110,9 +118,10 @@ button {
 }
 
 .input-keyword > button {
-    width: 8%;
+    width: 3rem;
     margin: 0;
     height: auto;
+    border-radius: 0 3px 3px 0;
 }
 
 .subtitle > p {
