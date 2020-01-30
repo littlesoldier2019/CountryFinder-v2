@@ -71,7 +71,7 @@ button {
 .search-type {
     width: 30%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .sort-button {
@@ -161,3 +161,148 @@ button {
     margin: 2rem 0;
 }
 
+@media only screen and (max-width: 1264px) {
+    .container-2 {
+        padding: 4% 7% 0 7%;
+    }
+}
+
+@media only screen and (max-width: 1264px) {
+    .search-type {
+        width: 37%;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .container-2 {
+        padding: 4% 4% 0 4%;
+    }
+
+    .country__display-child {
+        width: 27%;;
+    }
+
+    .search-type {
+        width: 40%;
+    }
+
+    .input__field {
+        width: 50%;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+    .input__field {
+        width: 60%;
+    }
+
+    .search-type {
+        width: 54%;
+    }
+
+    .container-2 {
+        padding: 3%;
+    }
+
+    .country__display-child {
+        width: 42%;;
+    }
+}
+
+@media only screen and (max-width: 667px) {
+    .input__field {
+        width: 70%;
+    }
+
+    .search-type {
+        width: 62%;
+    }
+
+    .container-2 {
+        padding: 2%;
+    }
+
+}
+
+@media only screen and (max-width: 560px) {
+    .search-type {
+        width: 75%;
+    }
+
+    .input__field {
+        width: 85%;
+    }
+
+    .search__field {
+        padding: 1rem 0 0.5rem 0;
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    .search-type {
+        width: 85%;
+    }
+
+    button {
+        width: 8rem;
+    }
+
+    .country__display-child {
+        width: 85%;
+    }
+
+    .country__display-img {
+        width: 90%;
+        margin: 1rem 0;
+    }
+}
+
+@media only screen and (max-width: 376px) {
+    .search-type {
+        width: 93%;
+    }
+
+    .input__field {
+        width: 93%;
+    }
+
+}
+
+@media only screen and (max-width: 360px) {
+    .search-type {
+        width: 98%;
+    }
+
+    .input-keyword {
+        width: 99%;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .search-type {
+        width: 100%;
+    }
+
+    .input-keyword {
+        width: 100%;
+    }
+
+    button {
+        margin: .2rem;
+    }
+
+    .sort-button {
+        margin: .2rem;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    
+}
