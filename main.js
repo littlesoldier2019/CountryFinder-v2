@@ -73,19 +73,19 @@ function countryFinder() {
 
     })
     
-        let sortButton = document.getElementById('sort');
-            sortButton.addEventListener('click', function() {
-            countryDisplay.innerHTML = "";
-            
-            divArray.reverse();
-
-            for (let i = 0; i < divArray.length; i++) {
-                countryDisplay.appendChild(divArray[i]);
-                console.log(divArray[i]);
-            }
+    let sortButton = document.getElementById('sort');
+        sortButton.addEventListener('click', function() {
+        countryDisplay.innerHTML = "";
         
-            
-        });
+        divArray.reverse();
+
+        for (let i = 0; i < divArray.length; i++) {
+            countryDisplay.appendChild(divArray[i]);
+            console.log(divArray[i]);
+        }
+    
+        
+    });
 
     let startSearch = document.querySelector('#start-word');
     let containSearch = document.querySelector('#contain-word');
@@ -170,6 +170,4 @@ function countryFinder() {
  
     
 }
-
-// time slap input keyword
-// reverse the whole country
+ 
