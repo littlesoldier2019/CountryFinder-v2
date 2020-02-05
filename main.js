@@ -150,7 +150,7 @@ function countryFinder() {
         for (let i = 0; i < countryDiv.length; i++) {
             countryDiv[i].style.display = 'none';
 
-            if (countryH3[i].innerHTML.includes(searchInput.valuetoUpperCase()) === true ) {
+            if (countryH3[i].innerHTML.includes(searchInput.value.toUpperCase()) === true ) {
                 countryDiv[i].style.display = 'block';
                 resultNum.push(countryDiv[i]);
             } else {
@@ -170,4 +170,3 @@ function countryFinder() {
  
     
 }
- 
