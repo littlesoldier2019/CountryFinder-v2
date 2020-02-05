@@ -129,7 +129,7 @@ function countryFinder() {
         for (let i = 0; i < countryDiv.length; i++) {
             countryDiv[i].style.display = 'none';
             
-            if (countryH3[i].innerHTML.startsWith(searchInput.value.toUpperCase()) === true ) {
+            if (countryH3[i].innerHTML.toUpperCase().startsWith(searchInput.value.toUpperCase()) === true ) {
                 countryDiv[i].style.display = 'block';
                 resultNum.push(countryDiv[i]);
             } else {
@@ -150,7 +150,7 @@ function countryFinder() {
         for (let i = 0; i < countryDiv.length; i++) {
             countryDiv[i].style.display = 'none';
 
-            if (countryH3[i].innerHTML.includes(searchInput.value.toUpperCase()) === true ) {
+            if (countryH3[i].innerHTML.toUpperCase().includes(searchInput.value.toUpperCase()) === true ) {
                 countryDiv[i].style.display = 'block';
                 resultNum.push(countryDiv[i]);
             } else {
