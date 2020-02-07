@@ -62,7 +62,6 @@ button {
     flex-direction: column;
     background-color: #F7CE3E;
     padding: 2rem 0;
-    height: 290px;
     background-position: center; 
     background-repeat: no-repeat; 
     background-size: cover; 
@@ -74,17 +73,20 @@ button {
     justify-content: center;
 }
 
-.sort-button {
+.sort-button,
+.draw-graph {
     border-radius: 3px;
     margin: 0 0.5rem;
     width: 3rem;
 }
 
-.sort-button > button {
+.sort-button > button,
+.draw-grahp > button {
     width: 3rem;
     margin: 0;
     border: 2px solid #1B2C34;
 }
+
 
 .input__field {
     width: 40%;
@@ -123,6 +125,12 @@ button {
     border-radius: 0 3px 3px 0;
 }
 
+.population__container {
+    display: flex;
+    width: 40%;
+    justify-content: center;
+    align-items: baseline;
+}
 
 .container-2 {
     padding: 5% 10% 0 10%;
@@ -149,16 +157,25 @@ button {
 
 .country__display-imgDiv {
     height: 40%;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .country__display-img {
-    width: 80%;
+    height: 8rem;
+    width: 12rem;
     box-shadow: 5px 5px 8px #888888;
-    margin: 2rem 0;
+    margin: 1rem 0;
+}
+
+.country__display-capital {
+    font-family: inherit;
+}
+
+.country__display-language {
+    line-height: 1.5;
 }
 
 @media only screen and (max-width: 1264px) {

@@ -4,6 +4,7 @@ function countryFinder() {
 
     const countryDisplay = document.querySelector('.country__display')
     const countryList = 'https://restcountries.eu/rest/v2/all';
+    let sortBtn = document.getElementById('sort');
 
     let div;
     let flagDiv;
@@ -13,26 +14,26 @@ function countryFinder() {
     let countryPopulation;
     let countryRegion;
     let countryLanguage;
-    let divArray = [];
-            
+    let divArray = [];  
+    
 
     fetch(countryList)
         .then(response => response.json())
         .then(countries => {
 
-        console.log(countries.length);
-        document.getElementById('totalCountry').innerHTML = countries.length;
+            document.getElementById('totalCountry').innerHTML = countries.length;
+            
+            createDiv(countries);
 
-        for (const country of countries) {
+            sortBtn.addEventListener('click', sortPopulation);
 
-            let {
-                name,
-                capital,
-                population,
-                region,
-                languages,
-                flag,
-            } = country;
+        })
+    
+        
+
+    function createDiv(countries) {
+
+        countries.forEach((item) => {
 
             div = document.createElement('div');
             flagDiv = document.createElement('div');
@@ -43,130 +44,153 @@ function countryFinder() {
             countryRegion = document.createElement('p');
             countryLanguage = document.createElement('p');
             
-            countryName.innerHTML = name;
-            countryCapital.innerHTML = '<b>Capital:</b> ' + capital;
-            countryPopulation.innerHTML = '<b>Population:</b> ' + population;
-            countryRegion.innerHTML = '<b>Region:</b> ' + region;
-            countryLanguage.innerHTML = '<b>Language:</b> ' + languages[0]['name'];   
-            countryflag.src = flag;
-
+            
             div.classList.add('country__display-child');
             flagDiv.classList.add('country__display-imgDiv');
             countryName.classList.add('country__display-name');
+            countryCapital.classList.add('country__display-capital');
+            countryPopulation.classList.add('country__display-population')
+            countryLanguage.classList.add('country__display-language');
             countryflag.classList.add('country__display-img');
             
             countryDisplay.append(div);
             div.appendChild(flagDiv);
             flagDiv.append(countryflag);
+    
+            div.append(countryName);
+            div.append(countryCapital);
+            div.append(countryPopulation);
+            div.append(countryRegion);
+            div.append(countryLanguage);
+    
+            countryName.innerHTML = item.name;
+            countryCapital.innerHTML = '<b>Capital:</b> ' + item.capital;
+            countryPopulation.innerHTML = '<b>Population:</b> ' + item.population;
+            countryRegion.innerHTML = '<b>Region:</b> ' + item.region;              
+            countryflag.src = item.flag;
+            
+    
+            let languagesAll = [];
+            item.languages.forEach(item => {
+                languagesAll.push(item['name'])
+            });
 
-            div.appendChild(countryName);
-            div.appendChild(countryCapital);
-            div.appendChild(countryPopulation);
-            div.appendChild(countryRegion);
-            div.appendChild(countryLanguage);
+            countryLanguage.innerHTML = '<b>Language:</b> ' + languagesAll.toString();
 
             divArray.push(div);
-
             
-        }
+        });
+       
+    }
 
+    let searchBtn = document.getElementById('search'); 
+        searchBtn.addEventListener('click', getCountry);
+    let searchInput = document.querySelector('#keyword');
+        searchInput.addEventListener('keyup', getCountry);
 
+    
+    let buttonStatus;
+
+    let capitalSearch = document.getElementById('capital');
+        capitalSearch.addEventListener('click', function() {
+        buttonStatus = 'capital';
     })
-    
-    let sortButton = document.getElementById('sort');
-        sortButton.addEventListener('click', function() {
-        countryDisplay.innerHTML = "";
-        
-        divArray.reverse();
 
-        for (let i = 0; i < divArray.length; i++) {
-            countryDisplay.appendChild(divArray[i]);
-            console.log(divArray[i]);
-        }
-    
-        
-    });
+    let languageSearch = document.getElementById('language')
+        languageSearch.addEventListener('click', function() {
+        buttonStatus = 'language';
+    })
 
-    let startSearch = document.querySelector('#start-word');
-    let containSearch = document.querySelector('#contain-word');
-    let search = document.querySelector('#search');
+    
     let subTitle = document.querySelector('.subtitle');
     let countryDiv = document.getElementsByClassName('country__display-child');
-    let countryH3= document.getElementsByClassName('country__display-name');
-    let searchInput = document.querySelector('#keyword');
-
-   
-    let buttonStatus;
-    startSearch.addEventListener('click', function() {
-            buttonStatus = 'start';
-        })
-    containSearch.addEventListener('click', function() {
-            buttonStatus = 'contain';
-        })
+    let capital = document.getElementsByClassName('country__display-capital');
+    let language = document.getElementsByClassName('country__display-language');
+    let population = document.getElementsByClassName('country__display-population');
+  
     
+    function getCountry() {
 
-    search.addEventListener('click', findCountry);
-    searchInput.addEventListener('keyup', findCountry);
+        clearForm()
 
-    function findCountry() {
-        clearForm();
-        if (buttonStatus === 'start') {
-            getCountryStart();
-            subTitle.innerHTML = '<p>' + 'Number of countries <b>start</b> with ' + '"' + searchInput.value + '"' + ' is ' + resultNum.length + '</p>';
-        } else if (buttonStatus === 'contain') {
-            getCountryContain();
-            subTitle.innerHTML = '<p>' + 'Number of countries <b>contain</b> ' + '"' + searchInput.value + '"' + ' is ' + resultNum.length + '</p>';
-        } else if (buttonStatus !== 'start' && buttonStatus !== 'contain') {
+        if (buttonStatus === 'capital') {
+            getCountryCapital();
+            
+        } else if (buttonStatus === 'language') {
+            getCountryLanguage();
+            
+        } else if (buttonStatus !== 'capital' && buttonStatus !== 'language') {
             subTitle.innerHTML = '<p>' + 'Please choose the search term first' + '</p>';
         }
-    }
- 
-    
-    // startSearch.addEventListener('click', getCountryStart);
-    let resultNum = [];
 
-    function getCountryStart() {
+    }
+
+
+    function getCountryCapital() {
+
         for (let i = 0; i < countryDiv.length; i++) {
+
             countryDiv[i].style.display = 'none';
-            
-            if (countryH3[i].innerHTML.toUpperCase().startsWith(searchInput.value.toUpperCase()) === true ) {
+
+            if (capital[i].innerText.toUpperCase().indexOf(searchInput.value.toUpperCase()) === 9 ) {
                 countryDiv[i].style.display = 'block';
-                resultNum.push(countryDiv[i]);
             } else {
                 countryDiv[i].style.display = 'none';
             }
+        }
+    }
 
+    
+
+    function getCountryLanguage() {
+
+        for (let i = 0; i < countryDiv.length; i++) {
+            
+            countryDiv[i].style.display = 'none';
+          
+        let languageStr = language[i].innerText.slice(9);
+        let languageArr = languageStr.split(',');
+
+            languageArr.forEach((item) => {
+
+                if (item.toUpperCase().startsWith(searchInput.value.toUpperCase()) === true) {
+                    countryDiv[i].style.display = 'block';
+                } else {
+                    countryDiv[i].style.display = 'none';
+                }
+
+            })
+        
+        }
+    }
+
+
+    function sortPopulation() {
+
+        countryDisplay.innerHTML = "";
+
+        let populationNum;
+
+        for (let i = 0; i < countryDiv.length; i++) {
+            // populationNum = population[0].slice(11);
+            console.log(population[0]);
         }
         
-        console.log(searchInput.value);
-    
     }
 
 
-    // containSearch.addEventListener('click', getCountryContain);
-
-    function getCountryContain() {
-
-        for (let i = 0; i < countryDiv.length; i++) {
-            countryDiv[i].style.display = 'none';
-
-            if (countryH3[i].innerHTML.toUpperCase().includes(searchInput.value.toUpperCase()) === true ) {
-                countryDiv[i].style.display = 'block';
-                resultNum.push(countryDiv[i]);
-            } else {
-                countryDiv[i].style.display = 'none';
-            }
-           
-        }
     
-    }
-
     function clearForm() {
-        if (countryDiv.innerHTML !== "" || resultNum.length !== 0) {
+
+        if (countryDiv.innerHTML !== "") {
             countryDiv.innerHTML === "";
-            resultNum = [];
-        }
+        } 
     }
- 
-    
+
+    // searchInput.addEventListener('click', () => {
+    //     if (searchInput.value !== '')
+    //     searchInput.value === '';
+    // }) 
+
+
 }
