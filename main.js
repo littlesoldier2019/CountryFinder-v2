@@ -25,7 +25,8 @@ function countryFinder() {
             
             createDiv(countries);
 
-            sortBtn.addEventListener('click', sortPopulation);
+            // sortBtn.addEventListener('click', sortPopulation);
+
 
         })
     
@@ -89,7 +90,7 @@ function countryFinder() {
         searchInput.addEventListener('keyup', getCountry);
 
     
-    let buttonStatus;
+    let buttonStatus = '';
 
     let capitalSearch = document.getElementById('capital');
         capitalSearch.addEventListener('click', function() {
@@ -165,18 +166,18 @@ function countryFinder() {
     }
 
 
-    function sortPopulation() {
+    // function sortPopulation(countries) {
 
-        countryDisplay.innerHTML = "";
-
-        let populationNum;
-
-        for (let i = 0; i < countryDiv.length; i++) {
-            // populationNum = population[0].slice(11);
-            console.log(population[0]);
-        }
+    //     countryDisplay.innerHTML = "";
         
-    }
+    //     forEach
+    //     divArray.sort(country.name);
+
+    //         for (let i = 0; i < divArray.length; i++) {
+    //             countryDisplay.appendChild(divArray[i]);
+    //         }
+        
+    // }
 
 
     
@@ -187,10 +188,10 @@ function countryFinder() {
         } 
     }
 
-    // searchInput.addEventListener('click', () => {
-    //     if (searchInput.value !== '')
-    //     searchInput.value === '';
-    // }) 
+    searchInput.addEventListener('click', () => {
+        if (searchInput.value !== '')
+        searchInput.value === '';
+    }) 
 
 
 }
