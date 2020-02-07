@@ -25,7 +25,7 @@ function countryFinder() {
             
             createDiv(countries);
 
-            // sortBtn.addEventListener('click', sortPopulation);
+            sortBtn.addEventListener('click', sortPopulation);
 
 
         })
@@ -166,16 +166,17 @@ function countryFinder() {
     }
 
 
-    // function sortPopulation(countries) {
+    // function sortPopulation(divArray) {
 
     //     countryDisplay.innerHTML = "";
         
-    //     forEach
-    //     divArray.sort(country.name);
-
-    //         for (let i = 0; i < divArray.length; i++) {
-    //             countryDisplay.appendChild(divArray[i]);
-    //         }
+    //     for (let div of divArray) {
+    //         countries.sort((a,b) => {
+    //             if (a.div.population - b.div.population) {
+    //             }
+    //             countryDisplay.appendChild(div);
+    //         })
+    //     }
         
     // }
 
