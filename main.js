@@ -25,8 +25,9 @@ function countryFinder() {
             
             createDiv(countries);
 
-            sortBtn.addEventListener('click', sortPopulation);
-
+            sortBtn.addEventListener('click', () => {
+                sortPopulation(countries)
+            });
 
         })
     
@@ -80,7 +81,7 @@ function countryFinder() {
 
             divArray.push(div);
             
-        });
+        }); return divArray;
        
     }
 
@@ -165,21 +166,35 @@ function countryFinder() {
         }
     }
 
-
-    // function sortPopulation(divArray) {
-
-    //     countryDisplay.innerHTML = "";
+    let sortStatus = false;
+    sortBtn.addEventListener('click', () => {
+        if (sortStatus === false) {
+            sortStatus = true
+        } else {
+            sortStatus = false;
+        }
         
-    //     for (let div of divArray) {
-    //         countries.sort((a,b) => {
-    //             if (a.div.population - b.div.population) {
-    //             }
-    //             countryDisplay.appendChild(div);
-    //         })
-    //     }
-        
-    // }
+    })
 
+    function sortPopulation(countries) {  
+
+        countryDisplay.innerHTML = "";
+
+        if (sortStatus === true) {
+            countries.sort( (a,b) => {
+                return  b.population - a.population
+                }
+            )
+        } else if (sortStatus === false) {
+            countries.sort( (a,b) => {
+                return  a.population - b.population
+                }
+            )
+        }
+        
+        createDiv(countries);
+
+    }
 
     
     function clearForm() {
