@@ -88,7 +88,7 @@ function countryFinder() {
     let searchBtn = document.getElementById('search'); 
         searchBtn.addEventListener('click', getCountry);
     let searchInput = document.querySelector('#keyword');
-        searchInput.addEventListener('keyup', getCountry);
+        searchInput.addEventListener('keypress', getCountry);
 
     
     let buttonStatus = '';
@@ -108,7 +108,6 @@ function countryFinder() {
     let countryDiv = document.getElementsByClassName('country__display-child');
     let capital = document.getElementsByClassName('country__display-capital');
     let language = document.getElementsByClassName('country__display-language');
-    let population = document.getElementsByClassName('country__display-population');
   
     
     function getCountry() {
@@ -176,23 +175,47 @@ function countryFinder() {
         
     })
 
+    
+
     function sortPopulation(countries) {  
 
-        countryDisplay.innerHTML = "";
+    let populationNum = (item)  => {
+        return parseInt((item.childNodes[3].innerText).slice(12));
+    }    
+
+    countryDisplay.innerHTML = "";
 
         if (sortStatus === true) {
-            countries.sort( (a,b) => {
-                return  b.population - a.population
+            divArray.sort( (a,b) => {
+                return  populationNum(b) - populationNum(a);
                 }
             )
         } else if (sortStatus === false) {
-            countries.sort( (a,b) => {
-                return  a.population - b.population
+            divArray.sort( (a,b) => {
+                return  populationNum(a) - populationNum(b);
                 }
             )
         }
+
+        for (let i = 0; i < divArray.length; i++) {
+            countryDisplay.appendChild(divArray[i]);
+        }
+
+        // countryDisplay.innerHTML = "";
+
+        // if (sortStatus === true) {
+        //     countries.sort( (a,b) => {
+        //         return  b.population - a.population
+        //         }
+        //     )
+        // } else if (sortStatus === false) {
+        //     countries.sort( (a,b) => {
+        //         return  a.population - b.population
+        //         }
+        //     )
+        // }
         
-        createDiv(countries);
+        // createDiv(countries);
 
     }
 
